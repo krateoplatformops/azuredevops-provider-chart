@@ -4,12 +4,24 @@ metadata:
   name: {{ .Chart.Name }}
 rules:
 - apiGroups: ["azuredevops.krateo.io"]
-  resources: ["connectorconfigs", "gitrepositories", "pipelines", "teamprojects", "runs"]
   verbs: ["create", "delete", "get", "list", "patch", "update", "watch"]
+  resources:
+  - connectorconfigs
+  - gitrepositories 
+  - pipelines
+  - teamprojects
+  - runs
+  - pipelinepermissions
 
 - apiGroups: ["azuredevops.krateo.io"]
-  resources: ["gitrepositories/status", "pipelines/status", "teamprojects/status", "runs/status"]
   verbs: ["get", "patch", "update"]
+  resources:
+  - gitrepositories/status
+  - pipelines/status
+  - teamprojects/status
+  - runs/status
+  - pipelinepermissions/status
+  
 
 - apiGroups: [""]
   resources: ["secrets"]
