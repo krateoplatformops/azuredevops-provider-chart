@@ -21,6 +21,7 @@ rules:
   - teamprojects/status
   - runs/status
   - pipelinepermissions/status
+  - feeds/status
   
 
 - apiGroups: [""]
