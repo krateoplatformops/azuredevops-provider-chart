@@ -12,6 +12,7 @@ rules:
   - teamprojects
   - runs
   - pipelinepermissions
+  - feeds
 
 - apiGroups: ["azuredevops.krateo.io"]
   verbs: ["get", "patch", "update"]
