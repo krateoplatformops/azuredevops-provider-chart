@@ -13,6 +13,7 @@ rules:
   - runs
   - pipelinepermissions
   - feeds
+  - queues
 
 - apiGroups: ["azuredevops.krateo.io"]
   verbs: ["get", "patch", "update"]
@@ -23,6 +24,7 @@ rules:
   - runs/status
   - pipelinepermissions/status
   - feeds/status
+  - queues/status
   
 
 - apiGroups: [""]
