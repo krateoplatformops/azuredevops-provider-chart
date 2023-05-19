@@ -14,6 +14,7 @@ rules:
   - pipelinepermissions
   - feeds
   - queues
+  - endpoints
 
 - apiGroups: ["azuredevops.krateo.io"]
   verbs: ["get", "patch", "update"]
@@ -25,6 +26,7 @@ rules:
   - pipelinepermissions/status
   - feeds/status
   - queues/status
+  - endpoints/status
   
 
 - apiGroups: [""]
