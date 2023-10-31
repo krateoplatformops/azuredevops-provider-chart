@@ -7,7 +7,7 @@ rules:
   verbs: ["create", "delete", "get", "list", "patch", "update", "watch"]
   resources:
   - connectorconfigs
-  - gitrepositories 
+  - gitrepositories
   - pipelines
   - teamprojects
   - runs
@@ -15,6 +15,7 @@ rules:
   - feeds
   - queues
   - endpoints
+  - feedpermissions
 
 - apiGroups: ["azuredevops.krateo.io"]
   verbs: ["get", "patch", "update"]
@@ -27,7 +28,8 @@ rules:
   - feeds/status
   - queues/status
   - endpoints/status
-  
+  - feedpermissions/status
+
 
 - apiGroups: [""]
   resources: ["secrets"]
