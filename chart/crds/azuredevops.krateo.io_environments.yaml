@@ -5,26 +5,22 @@ metadata:
   annotations:
     controller-gen.kubebuilder.io/version: v0.11.1
   creationTimestamp: null
-  name: feeds.azuredevops.krateo.io
+  name: environments.azuredevops.krateo.io
 spec:
   group: azuredevops.krateo.io
   names:
     categories:
     - krateo
     - azuredevops
-    kind: Feed
-    listKind: FeedList
-    plural: feeds
-    singular: feed
+    kind: Environment
+    listKind: EnvironmentList
+    plural: environments
+    singular: environment
   scope: Cluster
   versions:
   - additionalPrinterColumns:
     - jsonPath: .status.id
       name: ID
-      type: string
-    - jsonPath: .status.url
-      name: URL
-      priority: 10
       type: string
     - jsonPath: .status.conditions[?(@.type=='Ready')].status
       name: READY
@@ -36,7 +32,7 @@ spec:
     name: v1alpha1
     schema:
       openAPIV3Schema:
-        description: Feed is the Schema for the Feeds API
+        description: Environment is the Schema for the Environments API
         properties:
           apiVersion:
             description: 'APIVersion defines the versioned schema of this representation
@@ -51,7 +47,7 @@ spec:
           metadata:
             type: object
           spec:
-            description: Feed defines the desired state of Feed
+            description: Environment defines the desired state of Environment
             properties:
               connectorConfigRef:
                 description: 'ConnectorConfigRef: configuration spec for the REST
@@ -76,19 +72,15 @@ spec:
                 - Orphan
                 - Delete
                 type: string
-              isReadOnly:
-                type: boolean
+              description:
+                description: Description of the environment
+                type: string
               name:
-                description: Name of the feed.
-                type: string
-              organization:
-                description: Organization
-                type: string
-              project:
-                description: 'Project: TeamProject name or ID.'
+                description: Name of the environment
                 type: string
               projectRef:
-                description: ProjectRef - A reference to a TeamProject.
+                description: ProjectRef - A reference to a TeamProject that owns the
+                  feed.
                 properties:
                   name:
                     description: Name of the referenced object.
@@ -100,30 +92,8 @@ spec:
                 - name
                 - namespace
                 type: object
-              upstreamSources:
-                description: A list of sources that this feed will fetch packages
-                  from. An empty list indicates that this feed will not search any
-                  additional sources for packages. UpstreamSources with the same "location"
-                  field MUST have the same "name" field.
-                items:
-                  properties:
-                    location:
-                      description: 'Location: The location of the upstream source.'
-                      type: string
-                    name:
-                      description: 'Name: The name of the upstream source.'
-                      type: string
-                    protocol:
-                      description: 'Protocol: The protocol of the upstream source.
-                        Possible values are: [NuGet, Npm, Maven, PyPi, Powershell,
-                        Docker].'
-                      type: string
-                    upstreamSourceType:
-                      description: 'UpstraemSourceType: The type of the upstream source.
-                        Possible values are: [internal, public].'
-                      type: string
-                  type: object
-                type: array
+            required:
+            - name
             type: object
           status:
             properties:
@@ -161,9 +131,8 @@ spec:
                   type: object
                 type: array
               id:
-                type: string
-              url:
-                type: string
+                description: The id of the environment
+                type: integer
             type: object
         type: object
     served: true
