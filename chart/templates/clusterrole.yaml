@@ -7,30 +7,31 @@ rules:
   verbs: ["create", "delete", "get", "list", "patch", "update", "watch"]
   resources:
   - connectorconfigs
-  - gitrepositories
-  - pipelines
-  - teamprojects
-  - runs
-  - pipelinepermissions
-  - feeds
-  - queues
   - endpoints
+  - environments
   - feedpermissions
-
+  - feeds
+  - gitrepositories
+  - pipelinepermissions
+  - pipelines
+  - queues
+  - repositorypermissions
+  - runs
+  - teamprojects
 - apiGroups: ["azuredevops.krateo.io"]
   verbs: ["get", "patch", "update"]
   resources:
-  - gitrepositories/status
-  - pipelines/status
-  - teamprojects/status
-  - runs/status
-  - pipelinepermissions/status
-  - feeds/status
-  - queues/status
   - endpoints/status
+  - environments/status
   - feedpermissions/status
-
-
+  - feeds/status
+  - gitrepositories/status
+  - pipelinepermissions/status
+  - pipelines/status
+  - queues/status
+  - repositorypermissions/status
+  - runs/status
+  - teamprojects/status
 - apiGroups: [""]
   resources: ["secrets"]
   verbs: ["get", "list", "watch"]
