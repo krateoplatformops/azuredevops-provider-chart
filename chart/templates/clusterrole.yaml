@@ -19,6 +19,7 @@ rules:
   - repositorypermissions
   - runs
   - teamprojects
+  - users
 - apiGroups: ["azuredevops.krateo.io"]
   verbs: ["get", "patch", "update"]
   resources:
@@ -34,6 +35,7 @@ rules:
   - repositorypermissions/status
   - runs/status
   - teamprojects/status
+  - users/status
 - apiGroups: [""]
   resources: ["secrets"]
   verbs: ["get", "list", "watch"]
