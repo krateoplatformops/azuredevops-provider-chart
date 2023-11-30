@@ -12,6 +12,7 @@ rules:
   - feedpermissions
   - feeds
   - gitrepositories
+  - groups
   - pipelinepermissions
   - pipelines
   - queues
@@ -26,6 +27,7 @@ rules:
   - feedpermissions/status
   - feeds/status
   - gitrepositories/status
+  - groups/status
   - pipelinepermissions/status
   - pipelines/status
   - queues/status
