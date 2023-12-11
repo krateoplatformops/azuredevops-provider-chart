@@ -1,0 +1,31 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: {{ .Chart.Name }}-apply-job
+  annotations:
+    # This is what defines this resource as a hook. Without this line, the
+    # job is considered part of the release.
+    "helm.sh/hook": pre-install
+    "helm.sh/hook-weight": "5"
+    "helm.sh/hook-delete-policy": hook-succeeded
+spec:
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+        - name: {{ .Chart.Name }}-kubectl
+          image: bitnami/kubectl
+          command:
+            - kubectl
+            - patch
+            - crd
+            - pipelinepermissions.azuredevops.krateo.io
+            - --patch-file
+            - /tmp/{{ .Chart.Name }}-crd.yaml
+          volumeMounts:
+            - name: crd-volume
+              mountPath: /tmp
+      volumes:
+        - name: crd-volume
+          configMap:
+            name: {{ .Chart.Name }}-configmap

@@ -35,6 +35,9 @@ spec:
         - containerPort: 8080
           name: metrics
           protocol: TCP
+        - containerPort: 9443
+          name: webhook-server
+          protocol: TCP
         resources: {}
         securityContext:
           allowPrivilegeEscalation: false
@@ -42,8 +45,17 @@ spec:
           runAsGroup: 2000
           runAsNonRoot: true
           runAsUser: 2000
+        volumeMounts:
+          - mountPath: /tmp/k8s-webhook-server/serving-certs
+            name: cert
+            readOnly: true
         terminationMessagePath: /dev/termination-log
         terminationMessagePolicy: File
+      volumes:
+      - name: cert
+        secret:
+          defaultMode: 420
+          secretName: {{ .Chart.Name }}-certs
       dnsPolicy: ClusterFirst
       restartPolicy: Always
       schedulerName: default-scheduler
