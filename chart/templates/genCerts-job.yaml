@@ -1,0 +1,25 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: {{ .Chart.Name }}-job
+  annotations:
+    # This is what defines this resource as a hook. Without this line, the
+    # job is considered part of the release.
+    "helm.sh/hook": pre-install
+    "helm.sh/hook-weight": "2"
+    "helm.sh/hook-delete-policy": hook-succeeded
+spec:
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+        - name: {{ .Chart.Name }}-patcher
+          image: bitnami/kubectl
+          command: ['/bin/bash','/tmp/mount/create-certs.sh', {{ .Release.Namespace }},  {{ .Chart.Name }}]
+          volumeMounts:
+            - name: script-volume
+              mountPath: /tmp/mount
+      volumes:
+        - name: script-volume
+          configMap:
+            name: {{ .Chart.Name }}-script-configmap
