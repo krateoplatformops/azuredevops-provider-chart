@@ -6,6 +6,7 @@ rules:
 - apiGroups: ["azuredevops.krateo.io"]
   verbs: ["create", "delete", "get", "list", "patch", "update", "watch"]
   resources:
+  - checkconfigurations
   - connectorconfigs
   - endpoints
   - environments
@@ -24,6 +25,7 @@ rules:
 - apiGroups: ["azuredevops.krateo.io"]
   verbs: ["get", "patch", "update"]
   resources:
+  - checkconfigurations/status
   - endpoints/status
   - environments/status
   - feedpermissions/status
