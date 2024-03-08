@@ -1,7 +1,9 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: {{ .Chart.Name }}-apply-job
+  name: {{ include "azuredevops-provider-chart.fullname" . }}-apply-job
+  labels:
+    {{- include "azuredevops-provider-chart.labels" . | nindent 4 }}
   annotations:
     # This is what defines this resource as a hook. Without this line, the
     # job is considered part of the release.
@@ -12,9 +14,9 @@ spec:
   template:
     spec:
       restartPolicy: OnFailure
-      serviceAccount: {{ .Chart.Name }}-job-sa
+      serviceAccount: {{ include "azuredevops-provider-chart.fullname" . }}-job-sa
       containers:
-        - name: {{ .Chart.Name }}-kubectl
+        - name: {{ include "azuredevops-provider-chart.fullname" . }}-kubectl
           image: bitnami/kubectl
           command:
             - kubectl
@@ -22,11 +24,11 @@ spec:
             - crd
             - pipelinepermissions.azuredevops.krateo.io
             - --patch-file
-            - /tmp/{{ .Chart.Name }}-crd.yaml
+            - /tmp/{{ include "azuredevops-provider-chart.fullname" . }}-crd.yaml
           volumeMounts:
             - name: crd-volume
               mountPath: /tmp
       volumes:
         - name: crd-volume
           configMap:
-            name: {{ .Chart.Name }}-configmap
+            name: {{ include "azuredevops-provider-chart.fullname" . }}-configmap

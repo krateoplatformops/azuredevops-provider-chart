@@ -1,14 +1,15 @@
 apiVersion: v1
 kind: Service
 metadata:
+  name: {{ include "azuredevops-provider-chart.fullname" . }}
   labels:
-    app.kubernetes.io/name: {{ .Chart.Name }}
-  name: {{ .Chart.Name }}
-  namespace: {{ .Release.Namespace }}
+    {{- include "azuredevops-provider-chart.labels" . | nindent 4 }}
 spec:
+  type: {{ .Values.service.type }}
   ports:
-    - port: 443
+    - port: {{ .Values.service.port }}
+      targetPort: http
       protocol: TCP
-      targetPort: 9443
+      name: http
   selector:
-    app.kubernetes.io/name: {{ .Chart.Name }}
+    {{- include "azuredevops-provider-chart.selectorLabels" . | nindent 4 }}
