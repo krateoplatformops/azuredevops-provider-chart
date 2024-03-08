@@ -1,7 +1,9 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: {{ .Chart.Name }}-job
+  name: {{ include "azuredevops-provider-chart.fullname" . }}
+  labels:
+    {{- include "azuredevops-provider-chart.labels" . | nindent 4 }}
   annotations:
     # This is what defines this resource as a hook. Without this line, the
     # job is considered part of the release.
@@ -12,15 +14,15 @@ spec:
   template:
     spec:
       restartPolicy: OnFailure
-      serviceAccount: {{ .Chart.Name }}-job-sa
+      serviceAccount: {{ include "azuredevops-provider-chart.fullname" . }}-job-sa
       containers:
-        - name: {{ .Chart.Name }}-patcher
+        - name: {{ include "azuredevops-provider-chart.fullname" . }}-patcher
           image: bitnami/kubectl
-          command: ['/bin/bash','/tmp/mount/create-certs.sh', {{ .Release.Namespace }},  {{ .Chart.Name }}]
+          command: ['/bin/bash','/tmp/mount/create-certs.sh', {{ .Release.Namespace }},  {{ include "azuredevops-provider-chart.fullname" . }}]
           volumeMounts:
             - name: script-volume
               mountPath: /tmp/mount
       volumes:
         - name: script-volume
           configMap:
-            name: {{ .Chart.Name }}-script-configmap
+            name: {{ include "azuredevops-provider-chart.fullname" . }}-script-configmap
