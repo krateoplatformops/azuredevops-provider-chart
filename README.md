@@ -2,11 +2,10 @@
 
 This is a [Helm Chart](https://helm.sh/docs/topics/charts/) for [Krateo AzureDevOps Provider](https://github.com/krateoplatformops/azuredevops-provider).
 
-
 ## How to install
 
 ```sh
-$ helm repo add krateo https://charts.krateo.io
-$ helm repo update krateo
-$ helm install azuredevops-provider krateo/azuredevops-provider
+helm repo add krateo https://charts.krateo.io
+helm repo update krateo
+helm install azuredevops-provider krateo/azuredevops-provider
 ```

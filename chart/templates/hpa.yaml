@@ -2,14 +2,14 @@
 apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
-  name: {{ include "azuredevops-provider-chart.fullname" . }}
+  name: {{ include "azuredevops-provider.fullname" . }}
   labels:
-    {{- include "azuredevops-provider-chart.labels" . | nindent 4 }}
+    {{- include "azuredevops-provider.labels" . | nindent 4 }}
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: {{ include "azuredevops-provider-chart.fullname" . }}
+    name: {{ include "azuredevops-provider.fullname" . }}
   minReplicas: {{ .Values.autoscaling.minReplicas }}
   maxReplicas: {{ .Values.autoscaling.maxReplicas }}
   metrics:
