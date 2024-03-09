@@ -1,9 +1,9 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: {{ include "azuredevops-provider-chart.fullname" . }}-script-configmap
+  name: {{ include "azuredevops-provider.fullname" . }}-script-configmap
   labels:
-    {{- include "azuredevops-provider-chart.labels" . | nindent 4 }}
+    {{- include "azuredevops-provider.labels" . | nindent 4 }}
   annotations:
     # This is what defines this resource as a hook. Without this line, the
     # job is considered part of the release.

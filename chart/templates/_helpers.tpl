@@ -1,7 +1,7 @@
 {{/*
 Expand the name of the chart.
 */}}
-{{- define "azuredevops-provider-chart.name" -}}
+{{- define "azuredevops-provider.name" -}}
 {{- default .Chart.Name .Values.nameOverride | trunc 63 | trimSuffix "-" }}
 {{- end }}
 
@@ -10,7 +10,7 @@ Create a default fully qualified app name.
 We truncate at 63 chars because some Kubernetes name fields are limited to this (by the DNS naming spec).
 If release name contains chart name it will be used as a full name.
 */}}
-{{- define "azuredevops-provider-chart.fullname" -}}
+{{- define "azuredevops-provider.fullname" -}}
 {{- if .Values.fullnameOverride }}
 {{- .Values.fullnameOverride | trunc 63 | trimSuffix "-" }}
 {{- else }}
@@ -26,16 +26,16 @@ If release name contains chart name it will be used as a full name.
 {{/*
 Create chart name and version as used by the chart label.
 */}}
-{{- define "azuredevops-provider-chart.chart" -}}
+{{- define "azuredevops-provider.chart" -}}
 {{- printf "%s-%s" .Chart.Name .Chart.Version | replace "+" "_" | trunc 63 | trimSuffix "-" }}
 {{- end }}
 
 {{/*
 Common labels
 */}}
-{{- define "azuredevops-provider-chart.labels" -}}
-helm.sh/chart: {{ include "azuredevops-provider-chart.chart" . }}
-{{ include "azuredevops-provider-chart.selectorLabels" . }}
+{{- define "azuredevops-provider.labels" -}}
+helm.sh/chart: {{ include "azuredevops-provider.chart" . }}
+{{ include "azuredevops-provider.selectorLabels" . }}
 {{- if .Chart.AppVersion }}
 app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
 {{- end }}
@@ -45,17 +45,17 @@ app.kubernetes.io/managed-by: {{ .Release.Service }}
 {{/*
 Selector labels
 */}}
-{{- define "azuredevops-provider-chart.selectorLabels" -}}
-app.kubernetes.io/name: {{ include "azuredevops-provider-chart.name" . }}
+{{- define "azuredevops-provider.selectorLabels" -}}
+app.kubernetes.io/name: {{ include "azuredevops-provider.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
 
 {{/*
 Create the name of the service account to use
 */}}
-{{- define "azuredevops-provider-chart.serviceAccountName" -}}
+{{- define "azuredevops-provider.serviceAccountName" -}}
 {{- if .Values.serviceAccount.create }}
-{{- default (include "azuredevops-provider-chart.fullname" .) .Values.serviceAccount.name }}
+{{- default (include "azuredevops-provider.fullname" .) .Values.serviceAccount.name }}
 {{- else }}
 {{- default "default" .Values.serviceAccount.name }}
 {{- end }}

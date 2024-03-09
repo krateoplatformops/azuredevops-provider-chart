@@ -1,9 +1,9 @@
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
-  name: {{ include "azuredevops-provider-chart.fullname" . }}
+  name: {{ include "azuredevops-provider.fullname" . }}
   labels:
-    {{- include "azuredevops-provider-chart.labels" . | nindent 4 }}
+    {{- include "azuredevops-provider.labels" . | nindent 4 }}
 rules:
 - apiGroups: ["azuredevops.krateo.io"]
   verbs: ["create", "delete", "get", "list", "patch", "update", "watch"]
