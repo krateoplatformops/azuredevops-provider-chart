@@ -1,0 +1,17 @@
+apiVersion: azuredevops.krateo.io/v1alpha1
+kind: TeamProject
+metadata:
+  name: teamproject-sample
+spec:
+  name: Test Project n.1
+  organization: kiratech-bancasella
+  description: Lorem ipsum dolor sit amet, consectetur adipiscing elit olè
+  visibility: private
+  capabilities:
+    versioncontrol:
+      sourceControlType: Git
+    processTemplate:
+      templateTypeId: 6b724908-ef14-45cf-84f8-768b5384da45
+  connectorConfigRef:
+    namespace: default
+    name: connectorconfig-sample

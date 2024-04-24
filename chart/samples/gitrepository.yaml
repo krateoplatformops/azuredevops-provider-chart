@@ -1,0 +1,13 @@
+apiVersion: azuredevops.krateo.io/v1alpha1
+kind: GitRepository
+metadata:
+  name: gitrepository-sample
+spec:
+  name: test-project-1
+  initialize: true
+  projectRef:
+    name: teamproject-sample
+    namespace: default
+  connectorConfigRef:
+    namespace: default
+    name: connectorconfig-sample

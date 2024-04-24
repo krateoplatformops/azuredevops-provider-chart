@@ -1,0 +1,42 @@
+apiVersion: azuredevops.krateo.io/v1alpha1
+kind: Endpoint
+metadata:
+  name: endpoint-sample
+  annotations:
+    krateo.io/connector-verbose: "true"
+spec:
+  deletionPolicy: Orphan
+  name: endpoint-sample-test-3
+  type: azurerm
+  projectRef: 
+    name: pipeline-proj
+    namespace: default
+  authorization:
+    parameters:
+      tenantid: 1272a66f-e2e8-4e88-ab43-487409186c3f
+      serviceprincipalId: 1272a66f-e2e8-4e88-ab43-487409186c3f
+      authenticationType: spnKey
+      serviceprincipalKey: somePassword
+    scheme: ServicePrincipal
+  data:
+    environment: AzureCloud
+    scopeLevel: Subscription
+    subscriptionId: 1272a66f-e2e8-4e88-ab43-487409186c3f
+    subscriptionName: Microsoft Azure Sponsorship
+    creationMode: Manual
+  isShared: false
+  url: https://management.azure.com/
+  serviceEndpointProjectReferences:
+    - description: description of the share
+      name: prova8
+      projectRef: 
+        name: test-shares
+        namespace: default
+    - description: description of the share
+      name: prova9
+      projectRef: 
+        name: test-share-1
+        namespace: default
+  connectorConfigRef:
+    namespace: default
+    name: connectorconfig-sample
