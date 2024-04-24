@@ -1,0 +1,22 @@
+apiVersion: azuredevops.krateo.io/v1alpha1
+kind: FeedPermission
+metadata:
+  name: feedpermission-sample
+  annotations:
+    krateo.io/connector-verbose: "false"
+spec:
+  deletionPolicy: Orphan
+  projectRef:
+    name: teamproject
+    namespace: default
+  feed: test-feed-4
+  user:
+    type: azure-group
+    role: reader
+    name: Contributors
+    projectRef:
+      name: pipeline-proj
+      namespace: default
+  connectorConfigRef:
+    namespace: default
+    name: connectorconfig-sample
