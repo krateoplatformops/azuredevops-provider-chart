@@ -21,9 +21,11 @@ rules:
   - queues
   - repositorypermissions
   - runs
+  - securefiles
   - teamprojects
   - teams
   - users
+  - variablegroups
 - apiGroups: ["azuredevops.krateo.io"]
   verbs: ["get", "patch", "update"]
   resources:
@@ -39,9 +41,11 @@ rules:
   - queues/status
   - repositorypermissions/status
   - runs/status
+  - securefiles/status
   - teamprojects/status
   - teams/status
   - users/status
+  - variablegroups/status
 - apiGroups: [""]
   resources: ["secrets"]
   verbs: ["get", "list", "watch"]
