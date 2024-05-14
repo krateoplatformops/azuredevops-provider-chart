@@ -18,6 +18,7 @@ rules:
   - groups
   - pipelinepermissions
   - pipelines
+  - pullrequests
   - queues
   - repositorypermissions
   - runs
@@ -38,6 +39,7 @@ rules:
   - groups/status
   - pipelinepermissions/status
   - pipelines/status
+  - pullrequests/status
   - queues/status
   - repositorypermissions/status
   - runs/status
