@@ -27,6 +27,7 @@ rules:
   - teams
   - users
   - variablegroups
+  - policies
 - apiGroups: ["azuredevops.krateo.io"]
   verbs: ["get", "patch", "update"]
   resources:
@@ -48,6 +49,7 @@ rules:
   - teams/status
   - users/status
   - variablegroups/status
+  - policies/status
 - apiGroups: [""]
   resources: ["secrets"]
   verbs: ["get", "list", "watch"]
