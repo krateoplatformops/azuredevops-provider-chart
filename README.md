@@ -9,3 +9,7 @@ helm repo add krateo https://charts.krateo.io
 helm repo update krateo
 helm install azuredevops-provider krateo/azuredevops-provider
 ```
+
+## Configuration
+
+To view the CRD configuration, visit [this link](https://doc.crds.dev/github.com/krateoplatformops/azuredevops-provider-chart).
