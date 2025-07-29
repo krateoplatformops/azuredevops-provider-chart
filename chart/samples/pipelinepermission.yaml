@@ -3,12 +3,12 @@ kind: PipelinePermission
 metadata:
   name: pipelinepermission-sample
 spec:
-  organization: kiratech-bancasella
-  project: 9f19fedb-a9ce-43c0-b167-07824a29fb66
-  authorize: false
+  organization: krateo-kog
+  project: 82575162-69b2-4a88-8fd7-bda0d05c0284
+  authorize: true
   resource:
     type: repository
-    id: 9f19fedb-a9ce-43c0-b167-07824a29fb66.5fb84e52-48a9-4fa6-b78f-fd434988ff38
+    id: 63885da2-bfea-4b13-b19d-cfdb414bccaf
   connectorConfigRef:
     namespace: default
     name: connectorconfig-sample

@@ -42,6 +42,7 @@ securityContext: {}
 service:
   type: ClusterIP
   port: 443
+  targetPort: 9443
   # Just in case of NodePort service
   # nodePort: 8443
 
