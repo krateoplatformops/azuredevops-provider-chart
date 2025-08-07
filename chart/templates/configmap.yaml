@@ -5,5 +5,6 @@ metadata:
   labels:
     {{- include "azuredevops-provider.labels" . | nindent 4 }}
 data:
-  AZURE_DEVOPS_PROVIDER_DEBUG: "{{ .Values.env.AZURE_DEVOPS_PROVIDER_DEBUG }}"
-  AZURE_DEVOPS_PROVIDER_POLL_INTERVAL: {{ .Values.env.AZURE_DEVOPS_PROVIDER_POLL_INTERVAL }}
+  {{- range $key, $value := .Values.env }}
+  {{ $key }}: {{ $value | quote }}
+  {{- end }}

@@ -4,11 +4,11 @@ metadata:
   name: pipelinepermission-sample
 spec:
   organization: krateo-kog
-  project: 82575162-69b2-4a88-8fd7-bda0d05c0284
+  project: 99837031-4e4e-4753-9a47-73fcc4cba766
   authorize: true
   resource:
     type: repository
-    id: 63885da2-bfea-4b13-b19d-cfdb414bccaf
+    id: 5605b0ba-e2fa-4aab-af0b-0888321b3a08
   connectorConfigRef:
     namespace: default
     name: connectorconfig-sample
