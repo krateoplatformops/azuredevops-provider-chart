@@ -110,5 +110,5 @@ tolerations: []
 affinity: {}
 
 env:
-  AZURE_DEVOPS_PROVIDER_DEBUG: "true"
+  AZURE_DEVOPS_PROVIDER_DEBUG: "false"
   AZURE_DEVOPS_PROVIDER_POLL_INTERVAL: "3m"
